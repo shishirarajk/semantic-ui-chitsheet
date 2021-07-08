@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Semantic UI Sandbox</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+      integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script type="text/javascript" src="form_script.js"></script>
+  </head>
+
+  <body>
+    <div class="ui container">
+      <!-- table that displays the data -->
+      <table class="ui celled table" id="productTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Contact number</th>
+            <th>Gender</th>
+            <th>Department</th>
+            <th>Behavior</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="row1">
+            <td data-label="Name" id="name_row1">James</td>
+            <td data-label="Contact" id="contact_row1">9019944981</td>
+            <td data-label="Gender" id="gender_row1">Male</td>
+            <td data-label="Department" id="dept_row1">COE</td>
+            <td>
+              <button
+                class="ui primary basic button"
+                onclick="productDelete(this);"
+              >
+                <i class="trash icon" style="user-select: auto"></i> Delete
+              </button>
+              <button
+                class="ui primary basic button"
+                id="edit_button1"
+                onclick="edit_row('1')"
+              >
+                <i class="edit icon" style="user-select: auto"></i> Edit
+              </button>
+              <button
+                class="ui primary basic button"
+                id="save_button1"
+                onclick="save_row('1')"
+                style="display: none"
+              >
+                <i class="save icon" style="user-select: auto"></i> Save
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- button to add new item -->
+      <button class="ui grey button create_btn" type="button" id="test">
+        <i class="plus icon" style="user-select: auto"></i>
+      </button>
+
+      <!-- modal that pops up when clicked on add new item -->
+      <div class="ui modal test">
+        <i class="close icon"></i>
+        <div class="header">Insert Data</div>
+        <div class="image content">
+          <div class="ui medium image">
+            <img
+              src="https://semantic-ui.com/images/avatar2/large/rachel.png"
+            />
+          </div>
+          <div class="description" style="width: 100%">
+            <div class="ui form">
+              <form>
+                <div class="field">
+                  <input type="text" name="name" placeholder="Name" id="name" />
+                </div>
+                <div class="field">
+                  <input
+                    type="number"
+                    name="contact"
+                    placeholder="Contact Number"
+                    id="contact"
+                    pattern="\d*"
+                    maxlength="4"
+                  />
+                </div>
+                <div class="field">
+                  <!-- <label>Dropdown</label> -->
+                  <select class="ui dropdown" name="dropdown" id="gender">
+                    <option value=""></option>
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <input
+                    type="text"
+                    name="dept"
+                    placeholder="Department"
+                    id="dept"
+                  />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="actions">
+          <button
+            class="ui submit grey button"
+            id="addProduct"
+            onclick="productUpdate();"
+          >
+            <i class="address card icon" style="user-select: auto"></i>Add
+          </button>
+        </div>
+      </div>
+
+      <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.js"></script>
+      <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"
+        integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+      ></script>
+
+      <script>
+        $(function () {
+          $("#test").click(function () {
+            $(".test").modal("show");
+          });
+          $(".test").modal({
+            closable: true,
+          });
+        });
+      </script>
+    </div>
+  </body>
+</html>
